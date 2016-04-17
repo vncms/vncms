@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app='main' ng-cloak>
+
+<head>
+    <base href="/vncms/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.7/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.4/angular.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.4/angular-aria.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.4/angular-animate.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.7/angular-material.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js'></script>
+    <script src="app/vn/core.js"></script>
+    <script src="app/components/home/home.js"></script>
+    <script>
+    var app = angular.module('main', ['vn.home']);
+    </script>
+</head>
+
+<body>
+    <div layout="row" flex>
+        <md-sidenav layout-fill class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar>
+                <div layout-align='end center' class='md-toolbar-tools' hide-gt-md ng-click='sidebar.toggle()'>
+                    <md-button class='md-icon-button md-raised'>
+                        <i class="material-icons">close</i>
+                    </md-button>
+                </div>
+                <h1 class="md-toolbar-tools">{{settings.info.name}}</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+                <div ui-view='sidebar'></div>
+            </md-content>
+        </md-sidenav>
+        <div layout='column' flex>
+            <md-toolbar class="md-whiteframe-z2" style='background:#f6f6f6;color:#202020'>
+                <div class='md-toolbar-tools'>
+                    <md-button class="md-raised md-fab md-icon-button md-mini" ng-click='sidebar.toggle()' hide-gt-md>
+                        <i class="material-icons">menu</i>
+                    </md-button>
+                    <div flex layout='row'>
+                        <div ui-view='toolbar'></div>
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding>
+            </md-content>
+        </div>
+    </div>
+</body>
+
+</html>
